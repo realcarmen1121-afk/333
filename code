@@ -1,0 +1,58 @@
+%%writefile liver_drugs.py
+# 模擬第三方套件 / 獨立模組
+
+DRUG_DATABASE = {
+    "Denamarin": {
+        "min_mg": 20,
+        "max_mg": 40,
+        "pill_mg": 225,
+        "side_effects": "偶見輕微腸胃不適、噁心或食慾不振。",
+        "contraindications": "對 S-腺苷甲硫氨酸 (SAMe) 或水飛薊素成分過敏者禁用。"
+    },
+    "Ursodiol": {
+        "min_mg": 10,
+        "max_mg": 15,
+        "pill_mg": 250,
+        "side_effects": "可能引起嘔吐、下痢、軟便或膽汁淤積相關不適。",
+        "contraindications": "完全性膽道阻塞（膽管完全堵塞）、膽囊穿孔者嚴禁使用。"
+    },
+    "Silymarin": {
+        "min_mg": 10,
+        "max_mg": 30,
+        "pill_mg": 100,
+        "side_effects": "極少數出現輕微拉肚子或腸胃脹氣。",
+        "contraindications": "對菊科植物過敏者慎用。"
+    },
+    "L-Carnitine": {
+        "min_mg": 25,
+        "max_mg": 50,
+        "pill_mg": 250,
+        "side_effects": "高劑量可能引起輕微噁心、腹瀉或體味改變。",
+        "contraindications": "嚴重腎功能不全者需在獸醫師評估下小心使用。"
+    },
+    "Colchicine": {
+        "min_mg": 0.01,
+        "max_mg": 0.03,
+        "pill_mg": 0.5,
+        "side_effects": "常見嘔吐、腹瀉、腹痛及骨髓抑制（白血球降低）。",
+        "contraindications": "嚴重胃腸道疾病、嚴重肝腎功能異常或懷孕母貓禁用。"
+    },
+    "Vitamin E": {
+        "min_mg": 10,
+        "max_mg": 20,
+        "pill_mg": 100,
+        "side_effects": "極高劑量可能干擾凝血功能或引起腸胃不適。",
+        "contraindications": "對維生素 E 過敏者禁用，凝血功能異常者需謹慎。"
+    }
+}
+
+def get_drug_info(drug_name):
+    """根據藥物名稱獲取藥物資訊，不分大小寫"""
+    for key, value in DRUG_DATABASE.items():
+        if key.lower() == drug_name.lower():
+            return key, value
+    return None, None
+
+def get_all_drugs():
+    """獲取所有可用的藥物清單"""
+    return list(DRUG_DATABASE.keys())
